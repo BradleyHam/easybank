@@ -1,0 +1,116 @@
+.header{
+    height: 80px;
+    background: white;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left:0;
+    right:0;
+    justify-content: space-between;
+    @include container;
+}
+
+.header__nav{
+    &--desktop{
+        height: 80px;
+        display: flex;
+        list-style-type: none;
+        @media(max-width: 900px){
+            display: none;
+        }
+    }
+    &--mobile{
+        position: absolute;
+        top: 80px;
+        transform: translateX(50%);
+        width: 85%;
+        right: 50%;
+        margin: 0 auto;
+        padding: 40px;
+        background: white;
+        margin-top: 20px;
+        list-style-type: none;
+        display: none;
+        box-shadow: 0 0 0 100vh rgba(0, 0, 0, 0.363);
+        z-index: 1;
+        border-radius: 5px;
+        
+    }
+    @media(max-width: 900px){
+        &--mobile{
+            display: block;
+            opacity: 0;
+            transition: all .5s;
+          
+        }
+        &--mobile.is-active{
+            opacity: 1;
+          
+        }
+    }
+
+}
+
+
+
+
+.header__nav--mobile li{
+    text-align: center;
+    cursor: pointer;
+    &:hover{
+        color: $DarkBlue;
+    }
+    &:not(:last-child){
+        margin-bottom: 20px;
+    }
+}
+
+.header__nav--desktop li{
+    display: flex;
+    align-items: center;
+    position: relative;
+    
+    &::after{
+        transform: scale(0);
+        position: absolute;
+        background: $Gradient;
+        content: '';
+        bottom: 0;
+        height: 3px;
+        width: 100%;
+        transform-origin: 50% 50%;
+        opacity: 0;
+        transition: all .5s;
+           
+    }
+    &:hover::after{
+        transform: scale(1);
+        opacity: 1;
+    }
+    &:not(:last-child){
+        margin-right: 15px;
+    }
+    &:hover{
+        cursor: pointer;
+        color: $DarkBlue;
+    }
+}
+
+.header__logo{
+    transform: translateY(10%)
+}
+
+.header__button{
+    @media(max-width: 900px){
+        display: none;
+    }
+}
+
+.hamburger{
+    display: none;
+    @media(max-width: 900px){
+        display: block;
+    }
+}
