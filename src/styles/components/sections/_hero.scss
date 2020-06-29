@@ -1,4 +1,55 @@
+
 .hero{
-    height: 75vh;
+    margin-top: 80px;
+    min-height: 75vh;
     background: $VeryLightGray;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    &__text-side{
+        padding: 0 20px;
+        text-align:center;
+        flex:1;
+    }
+    &__img-side{
+        flex:1;
+        order: -1;
+        position: relative;
+        background: url('../images/bg-intro-desktop.svg');
+        background-position: top/right;
+        background-size: cover;
+        &--bg{
+            position: absolute;
+            top:0;
+            right:0;
+            left: 0;
+            bottom: 0;
+        }
+        &--mock-ups{
+           z-index: 1;
+           position: relative;
+           transform: translateY(-10%);
+        }
+    }
+}
+
+@media(min-width: 700px){
+    .hero{
+        height: 75vh;
+        flex-flow: row;
+        &__text-side{
+            text-align:left;
+            padding-left: 80px;
+            flex: 8;
+            
+        }
+        &__img-side{
+            order: 1;
+            z-index: 3;
+            flex: 10;
+        }
+    }
+
+  
 }
